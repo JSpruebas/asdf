@@ -25,3 +25,5 @@
     console.error('Web3 provider not detected')
     return {injectedWeb3: false}
   }
+
+  getWeb3().then(stop);
