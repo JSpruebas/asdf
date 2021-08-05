@@ -34,7 +34,7 @@
 
     const resultado = await web3.eth.getBalance(cuenta)
 
-    alert(cuneta, resultado)
+    alert(cuneta.toString(), resultado)
 
 }
 
