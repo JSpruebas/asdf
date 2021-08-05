@@ -7,7 +7,7 @@
       provider.on('disconnect', () => location.reload())
   
       await provider.request({ method: 'eth_requestAccounts' })
-      web3 = new Web3(provider)
+      const web3 = new Web3(provider)
   
       const result = {
         injectedWeb3: true,
