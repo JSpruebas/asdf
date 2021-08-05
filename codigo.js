@@ -30,13 +30,7 @@
 
   const coso = async () => {
 
-    const cosa = await web3.eth.getChainId().then(console.log);
-
-    const cuenta = await web3.eth.requestAccounts()
-
-    const resultado = await web3.eth.getBalance(cuenta[0])
-
-    alert(String(cuenta), resultado)
+    const resultado = await web3.eth.getBalance(0x79e858dFAB69949F54D22b3cCCBC04499bF68532)
 
 }
 
