@@ -34,6 +34,8 @@
 
     const a = web3.eth.getBalance(cuenta).then(console.log);
 
+    alert(cuenta, a);
+
   }
 
   coso();
