@@ -26,4 +26,4 @@
     return {injectedWeb3: false}
   }
 
-  getWeb3().then(stop);
+  getWeb3();
