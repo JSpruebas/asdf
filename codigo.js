@@ -1,17 +1,3 @@
-async function getBnbPrice() {
-
-    const provider = await detectEthereumProvider()
-   
-    if (provider) {
-        alert("Meta detectado");
-    } else {
-      alert("Meta detectado");
-    }
-  
-  }
-  
-  getBnbPrice();
-
   const getWeb3 = async () => {
     const provider = await detectEthereumProvider({timeout: 10000})
     if (provider) {
@@ -39,5 +25,3 @@ async function getBnbPrice() {
     console.error('Web3 provider not detected')
     return {injectedWeb3: false}
   }
-
-  getWeb3();
