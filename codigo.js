@@ -1,5 +1,7 @@
+const provider = await detectEthereumProvider({timeout: 10000})
+  
   const getWeb3 = async () => {
-    const provider = await detectEthereumProvider({timeout: 10000})
+    
     if (provider) {
       provider.on('chainChanged', () => location.reload())
       provider.on('networkChanged', () => location.reload())
