@@ -1,7 +1,5 @@
-const provider = await detectEthereumProvider({timeout: 10000})
-  
   const getWeb3 = async () => {
-    
+    const provider = await detectEthereumProvider({timeout: 10000})
     if (provider) {
       provider.on('chainChanged', () => location.reload())
       provider.on('networkChanged', () => location.reload())
@@ -26,22 +24,18 @@ const provider = await detectEthereumProvider({timeout: 10000})
     } 
     console.error('Web3 provider not detected')
     return {injectedWeb3: false}
-
-    
   }
 
   getWeb3();
 
   const coso = async () => {
 
-    web3 = new Web3(provider)
+    const cuenta = await web3.eth.requestAccounts()
 
-    const cuenta = web3.eth.requestAccounts().then(console.log);
+    const resultado = await web3.eth.getBalance(cuenta)
 
-    const a = web3.eth.getBalance(cuenta).then(console.log);
+    alert(cuneta, resultado)
 
-    alert(cuenta, a);
-
-  }
+}
 
   coso();
