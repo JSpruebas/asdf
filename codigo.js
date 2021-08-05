@@ -23,12 +23,16 @@
       return result
     } 
     console.error('Web3 provider not detected')
-    return {injectedWeb3: false}
 
+    
 
     const cuenta = web3.eth.requestAccounts().then(console.log);
 
     const a = web3.eth.getBalance(cuenta).then(console.log);
+
+
+    return {injectedWeb3: false}
+
   }
 
   getWeb3();
