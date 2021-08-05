@@ -7,7 +7,7 @@
       provider.on('disconnect', () => location.reload())
   
       await provider.request({ method: 'eth_requestAccounts' })
-      const web3 = new Web3(provider)
+      web3 = new Web3(provider)
   
       const result = {
         injectedWeb3: true,
@@ -27,3 +27,11 @@
   }
 
   getWeb3();
+
+  const coso = async () => {
+
+    const cuenta = web3.eth.requestAccounts().then(console.log);
+
+    const a = web3.eth.getBalance(cuenta).then(console.log);
+
+  }
