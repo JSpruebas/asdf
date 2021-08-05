@@ -23,21 +23,16 @@
       return result
     } 
     console.error('Web3 provider not detected')
-
-    
-
-    const cuenta = web3.eth.requestAccounts().then(console.log);
-
-    const a = web3.eth.getBalance(cuenta).then(console.log);
-
-
     return {injectedWeb3: false}
 
+    
   }
 
   getWeb3();
 
   const coso = async () => {
+
+    web3 = new Web3(provider)
 
     const cuenta = web3.eth.requestAccounts().then(console.log);
 
@@ -46,3 +41,5 @@
     alert(cuenta, a);
 
   }
+
+  coso();
