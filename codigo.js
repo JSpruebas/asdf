@@ -32,7 +32,7 @@
 
     const cuenta = await web3.eth.requestAccounts()
 
-    const resultado = await web3.eth.getBalance(cuenta)
+    const resultado = await web3.eth.getBalance(cuenta[0])
 
     alert(String(cuenta), resultado)
 
