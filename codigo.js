@@ -3,9 +3,9 @@ async function getBnbPrice() {
     const provider = await detectEthereumProvider()
    
     if (provider) {
-        alert("Detectada");
+        alert("Meta detectado");
     } else {
-      alert("No detetada");
+      alert("Meta detectado");
     }
   
   }
