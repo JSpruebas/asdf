@@ -39,5 +39,5 @@ async function getBnbPrice() {
     console.error('Web3 provider not detected')
     return {injectedWeb3: false}
   }
-  
-  export default getWeb3
+
+  getWeb3();
