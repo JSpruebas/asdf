@@ -1,5 +1,4 @@
-import Web3 from 'web3';  
-  
+
   const getWeb3 = async () => {
     const provider = await detectEthereumProvider({timeout: 10000})
     if (provider) {
@@ -9,7 +8,14 @@ import Web3 from 'web3';
       provider.on('disconnect', () => location.reload())
   
       await provider.request({ method: 'eth_requestAccounts' })
+
+
       web3 = new Web3(provider)
+
+      if(typeof window !== 'undefined' && typeof window.web3 !== 'undefined'){
+        //We are in the browser and metamask is running
+        web3 = new Web3(window.web3.currentProvider);
+      }
   
       const result = {
         injectedWeb3: true,
