@@ -1,4 +1,5 @@
-   
+import Web3 from 'web3';
+
   const getWeb3 = async () => {
     const provider = await detectEthereumProvider({timeout: 10000})
     if (provider) {
