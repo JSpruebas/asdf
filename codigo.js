@@ -1,4 +1,4 @@
-import Web3 from 'web3';
+import Web3 from 'dist/web3.min.js';
 
   const getWeb3 = async () => {
     const provider = await detectEthereumProvider({timeout: 10000})
