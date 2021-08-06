@@ -1,0 +1,53 @@
+{
+  "name": "cakecalc",
+  "version": "0.0.1",
+  "description": "A cake compound apy calculator, to decide when is better to compund your cakes",
+  "productName": "CakeCalc",
+  "author": "Ariel <arielmendez@gmail.com>",
+  "private": true,
+  "scripts": {
+    "build": "quasar build",
+    "start": "node server.js",
+    "dev": "quasar dev",
+    "lint": "eslint --ext .js,.vue ./",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@metamask/detect-provider": "^1.2.0",
+    "@quasar/extras": "^1.0.0",
+    "axios": "^0.21.1",
+    "chart.js": "^2.9.4",
+    "connect-history-api-fallback": "^1.6.0",
+    "core-js": "^3.6.5",
+    "express": "^4.17.1",
+    "quasar": "^1.0.0",
+    "serve-static": "^1.14.1",
+    "vue-chartjs": "^3.5.1",
+    "vue-i18n": "^8.0.0",
+    "vuex": "^3.6.0",
+    "web3": "^1.3.4"
+  },
+  "devDependencies": {
+    "@quasar/app": "^2.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-vue": "^6.1.2"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": "12.x",
+    "yarn": ">= 1.21.1"
+  }
+}
