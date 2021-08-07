@@ -42,6 +42,8 @@ const web3 = new Web3
 
   coso();
 
-
+/*
   var zeroStratContract = new web3.eth.Contract(zeroStratAbi, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
   zeroStratContract.methods.calculateTotalPendingCakeRewards().call().then(console.log);
+
+*/
