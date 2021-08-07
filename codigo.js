@@ -10,7 +10,7 @@ const web3 = new Web3
   
       await provider.request({ method: 'eth_requestAccounts' })
 
-      const web3 = new Web3(provider)     
+      web3 = new Web3(provider)     
   
       const result = {
         injectedWeb3: true,
