@@ -40,18 +40,11 @@ const getWeb3 = async () => {
 
 getWeb3();
 
-const coso = async () => {
-
-  console.log("coso")
-  web3.eth.getAccounts(console.log);
-
+const coso = async () => {  
   const cuenta = "0x79e858dFAB69949F54D22b3cCCBC04499bF68532"
 
   const resultado = await web3.eth.getBalance(cuenta)
-  alert("El balance de" + cuenta + "es" + resultado)
-
-  console.log(resultado)
-
+  alert("El balance de " + cuenta + "es: " + resultado)
 }
 
 
