@@ -10,6 +10,7 @@ const getWeb3 = async () => {
     await provider.request({ method: 'eth_requestAccounts' })
 
     web3.setProvider(provider)   
+    web3.eth.setProvider(provider)
 
     //web3 = new Web3(provider)     
 
@@ -41,6 +42,7 @@ getWeb3();
 const coso = async () => {
 
   console.log("coso")
+  web3.eth.setProvider()
   web3.eth.getAccounts(console.log);
 
   const resultado = await web3.eth.getBalance("0x79e858dFAB69949F54D22b3cCCBC04499bF68532")
