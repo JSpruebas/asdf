@@ -44,7 +44,7 @@ const coso = async () => {
 
 }
 
-coso();
+//coso();
 
 /*
   var zeroStratContract = new web3.eth.Contract(zeroStratAbi, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
