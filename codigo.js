@@ -14,11 +14,6 @@ const getWeb3 = async () => {
 
     //web3 = new Web3(provider)     
 
-   const resultado = await web3.eth.getBalance("0x79e858dFAB69949F54D22b3cCCBC04499bF68532")
-
- console.log("EL BALANCE ES", resultado)
-
-    console.log("web3.eth current providers", web3.eth.currentProvider)
 
     const result = {
       injectedWeb3: true,
@@ -41,12 +36,14 @@ getWeb3();
 
 const coso = async () => {
 
+  web3.setProvider(provider)
+
   console.log("coso")
   web3.eth.getAccounts(console.log);
 
- // const resultado = await web3.eth.getBalance("0x79e858dFAB69949F54D22b3cCCBC04499bF68532")
+  const resultado = await web3.eth.getBalance("0x79e858dFAB69949F54D22b3cCCBC04499bF68532")
 
- // console.log(resultado)
+  console.log(resultado)
 
 }
 
