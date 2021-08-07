@@ -1,4 +1,6 @@
+
 const web3 = new Web3
+const zeroStratAbi = new zeroStratAbi.json
 
 const getWeb3 = async () => {
   const provider = await detectEthereumProvider({ timeout: 10000 })
