@@ -41,6 +41,7 @@ getWeb3();
 const coso = async () => {
 
   console.log("coso")
+  web3.eth.getAccounts(console.log);
 
   const resultado = await web3.eth.getBalance("0x79e858dFAB69949F54D22b3cCCBC04499bF68532")
 
