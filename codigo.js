@@ -1,8 +1,6 @@
 
 const web3 = new Web3
 
-import zeroStratAbi from './zeroStratAbi.json'
-
 const getWeb3 = async () => {
   const provider = await detectEthereumProvider({ timeout: 10000 })
   if (provider) {
@@ -49,8 +47,8 @@ const coso = async () => {
   const resultado = await web3.eth.getBalance(cuenta)
   alert("El balance de " + cuenta + " es: " + resultado)  
 
-  var zeroStratContract = new web3.eth.Contract(zeroStratAbi, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
-  zeroStratContract.methods.calculateTotalPendingCakeRewards().call().then(console.log);
+  //var zeroStratContract = new web3.eth.Contract(zeroStratAbi, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
+  //zeroStratContract.methods.calculateTotalPendingCakeRewards().call().then(console.log);
 
 
 }
