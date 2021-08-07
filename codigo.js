@@ -10,10 +10,13 @@ const getWeb3 = async () => {
 
     await provider.request({ method: 'eth_requestAccounts' })
 
-    web3.setProvider(provider)
-    console.log(web3.version)
+    web3.setProvider(provider)   
 
     //web3 = new Web3(provider)     
+
+
+    console.log(web3.version)
+    console.log(web3.provider)
 
     const result = {
       injectedWeb3: true,
