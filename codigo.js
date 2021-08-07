@@ -1,6 +1,8 @@
 
 const web3 = new Web3
 
+import zeroStratAbi from './zeroStratAbi'
+
 const getWeb3 = async () => {
   const provider = await detectEthereumProvider({ timeout: 10000 })
   if (provider) {
