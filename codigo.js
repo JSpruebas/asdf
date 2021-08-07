@@ -16,9 +16,9 @@ const getWeb3 = async () => {
 
 
     console.log(web3.version)
-    console.log(web3.eth.providers)
+    console.log("web3.eth providers", web3.eth.providers)
 
-    console.log(web3.eth.currentProvider)
+    console.log("web3.eth current providers", web3.eth.currentProvider)
 
     const result = {
       injectedWeb3: true,
