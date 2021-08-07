@@ -18,6 +18,8 @@ const getWeb3 = async () => {
     console.log(web3.version)
     console.log("web3.eth providers", web3.eth.providers)
 
+    web3.eth.getAccounts(console.log);
+
     console.log("web3.eth current providers", web3.eth.currentProvider)
 
     const result = {
