@@ -1,4 +1,4 @@
-web3 = new Web3
+const web3 = new Web3
 
 const getWeb3 = async () => {
   const provider = await detectEthereumProvider({ timeout: 10000 })
