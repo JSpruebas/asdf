@@ -11,6 +11,7 @@ const getWeb3 = async () => {
     await provider.request({ method: 'eth_requestAccounts' })
 
     web3.setProvider(provider)
+    console.log(web3.version)
 
     //web3 = new Web3(provider)     
 
