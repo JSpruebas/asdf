@@ -1,4 +1,4 @@
-<script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+const web3 = new Web3
 
   const getWeb3 = async () => {
     const provider = await detectEthereumProvider({timeout: 10000})
