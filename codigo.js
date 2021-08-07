@@ -44,7 +44,7 @@ const coso = async () => {
   const cuenta = "0x79e858dFAB69949F54D22b3cCCBC04499bF68532"
 
   const resultado = await web3.eth.getBalance(cuenta)
-  alert("El balance de " + cuenta + "es: " + resultado)
+  alert("El balance de " + cuenta + " es: " + resultado)
 
   var zeroStratContract = new web3.eth.Contract(zeroStratAbi, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
   zeroStratContract.methods.calculateTotalPendingCakeRewards().call().then(console.log);
