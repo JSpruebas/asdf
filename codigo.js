@@ -13,7 +13,7 @@
       await provider.request({ method: 'eth_requestAccounts' })
 
 
-      web3 = new Web3(provider)
+      const web3 = new Web3(provider)
 
      
   
