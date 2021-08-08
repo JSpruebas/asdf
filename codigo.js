@@ -40,8 +40,6 @@ window.onload = async () => {
   return { injectedWeb3: false }
 }
 
-//getWeb3();
-
 const coso = async () => {
   
   let tuCuenta = await web3.eth.getAccounts();
@@ -56,7 +54,7 @@ const coso = async () => {
 
   
 
-  document.write("Pending reward (busd/ust): " + pendingReward);
+  //document.write("Pending reward (busd/ust): " + pendingReward);
 }
 
 
