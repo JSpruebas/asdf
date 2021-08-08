@@ -41,9 +41,9 @@ window.onload = async () => {
 }
 
 const coso = async () => {
-  
+
   let tuCuenta = await web3.eth.getAccounts();
-  document.getElementById("add").innerText = tuCuenta;  
+  document.getElementById("add").innerText = tuCuenta;
 
 
   const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
