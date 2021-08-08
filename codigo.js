@@ -36,6 +36,7 @@ const getWeb3 = async () => {
     return result
   }
   console.error('Web3 provider not detected')
+  alert("No se detecta Meta")
   return { injectedWeb3: false }
 }
 
