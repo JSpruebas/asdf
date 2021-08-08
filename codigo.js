@@ -56,6 +56,10 @@ const coso = async () => {
   pendingReward = web3.utils.fromWei(pendingReward);
 
   document.getElementById("pendRew").innerText = pendingReward;
+
+
+  let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
+  document.getElementById("lastHarvest").innerText = pendingReward;
 }
 
 
