@@ -1,7 +1,7 @@
 
 const web3 = new Web3;
 
-const getWeb3 = async () => {
+window.onload = async () => {
   const provider = await detectEthereumProvider({ timeout: 10000 })
   if (provider) {
     provider.on('chainChanged', () => location.reload())
@@ -40,7 +40,7 @@ const getWeb3 = async () => {
   return { injectedWeb3: false }
 }
 
-getWeb3();
+//getWeb3();
 
 const coso = async () => {
   // const cuenta = "0x79e858dFAB69949F54D22b3cCCBC04499bF68532"
