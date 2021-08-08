@@ -15,29 +15,11 @@ window.onload = async () => {
 
     //web3 = new Web3(provider)     
 
-
-    const result = {
-      injectedWeb3: true,
-      provider,
-      web3() {
-        return web3
-      }
-    }
-    result.networkId = await web3.eth.net.getId()
-    result.coinbase = await web3.eth.getCoinbase()
-    result.balance = await web3.eth.getBalance(result.coinbase)
-
-
-
     coso();
-
-
-
-    return result
+    
   }
   console.error('Web3 provider not detected')
   alert("No se detecta Meta")
-  return { injectedWeb3: false }
 }
 
 const coso = async () => {
