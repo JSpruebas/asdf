@@ -29,7 +29,7 @@ const getWeb3 = async () => {
 
 
 
-    coso();
+    //coso();
 
 
 
