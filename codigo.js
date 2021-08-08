@@ -43,18 +43,15 @@ window.onload = async () => {
 const coso = async () => {
   
   let tuCuenta = await web3.eth.getAccounts();
-  document.getElementById("add").innerText = tuCuenta;
-  //document.write("Tu cuenta conectada: " + tuCuenta + "</p>");
+  document.getElementById("add").innerText = tuCuenta;  
+
 
   const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
   let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
 
-
   pendingReward = web3.utils.fromWei(pendingReward);
 
-  
-
-  //document.write("Pending reward (busd/ust): " + pendingReward);
+  document.getElementById("add").innerText = pendingReward;
 }
 
 
