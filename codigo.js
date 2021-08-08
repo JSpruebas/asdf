@@ -59,7 +59,7 @@ const coso = async () => {
 
 
   let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
-  document.getElementById("lastHarvest").innerText = pendingReward;
+  document.getElementById("lastHarvest").innerText = lastHarvest;
 }
 
 
