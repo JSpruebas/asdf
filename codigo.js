@@ -4,14 +4,14 @@ const web3 = new Web3
 const getWeb3 = async () => {
   const provider = await detectEthereumProvider({ timeout: 10000 })
   if (provider) {
-    provider.on('chainChanged', () => location.reload())    
+    provider.on('chainChanged', () => location.reload())
     provider.on('accountsChanged', () => location.reload())
     provider.on('disconnect', () => location.reload())
 
     await provider.request({ method: 'eth_requestAccounts' })
 
-    web3.setProvider(provider)   
-   // web3.eth.setProvider(provider)
+    web3.setProvider(provider)
+    // web3.eth.setProvider(provider)
 
     //web3 = new Web3(provider)     
 
@@ -41,14 +41,14 @@ const getWeb3 = async () => {
 
 getWeb3();
 
-const coso = async () => {  
+const coso = async () => {
   const cuenta = "0x79e858dFAB69949F54D22b3cCCBC04499bF68532"
 
   const resultado = await web3.eth.getBalance(cuenta)
-  alert("El balance de " + cuenta + " es: " + resultado)  
+  alert("El balance de " + cuenta + " es: " + resultado)
 
   const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
-  pendingReward= await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
+  let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
 
   document.write("Pending reward" + pendingReward);
 
@@ -56,5 +56,5 @@ const coso = async () => {
 }
 
 
-  
+
 
