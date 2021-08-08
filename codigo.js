@@ -1,7 +1,7 @@
 
 const web3 = new Web3
 
-window.onload = async () => {
+const getWeb3 = async () => {
   const provider = await detectEthereumProvider({ timeout: 10000 })
   if (provider) {
     provider.on('chainChanged', () => location.reload())
@@ -39,6 +39,8 @@ window.onload = async () => {
   alert("No se detecta Meta")
   return { injectedWeb3: false }
 }
+
+getWeb3();
 
 const coso = async () => {
  // const cuenta = "0x79e858dFAB69949F54D22b3cCCBC04499bF68532"
