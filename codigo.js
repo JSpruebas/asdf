@@ -1,5 +1,5 @@
 
-const web3 = new Web3
+const web3 = new Web3;
 
 const getWeb3 = async () => {
   const provider = await detectEthereumProvider({ timeout: 10000 })
@@ -28,7 +28,7 @@ const getWeb3 = async () => {
     result.balance = await web3.eth.getBalance(result.coinbase)
     //LocalStorage.set('account-connected', 'true')
 
-
+document.write(result.networkId)
     coso();
 
 
