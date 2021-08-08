@@ -45,6 +45,9 @@ const coso = async () => {
   let tuCuenta = await web3.eth.getAccounts();
   document.getElementById("add").innerText = tuCuenta;
 
+  let tuBalance = await web3.eth.getBalance();
+  tuBalance = web3.utils.fromWei(tuBalance);
+  document.getElementById("bal").innerText = tuBalance;
 
   const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
   let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
