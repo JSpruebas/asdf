@@ -45,7 +45,7 @@ const coso = async () => {
   let tuCuenta = await web3.eth.getAccounts();
   document.getElementById("add").innerText = tuCuenta;
 
-  let tuBalance = await web3.eth.getBalance();
+  let tuBalance = await web3.eth.getBalance(tuCuenta);
   tuBalance = web3.utils.fromWei(tuBalance);
   document.getElementById("bal").innerText = tuBalance;
 
