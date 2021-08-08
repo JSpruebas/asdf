@@ -1,3 +1,5 @@
+const abi1 = {
+
 [
     {
         "inputs": [
@@ -548,3 +550,5 @@
         "type": "function"
     }
 ]
+
+}
