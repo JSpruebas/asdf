@@ -48,7 +48,9 @@ const coso = async () => {
   alert("El balance de " + cuenta + " es: " + resultado)  
 
   const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
-  zeroStratContract.methods.calculateTotalPendingCakeRewards().call().then(console.log);
+  pendingReward= await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
+
+  document.write("Pending reward" + pendingReward);
 
 
 }
