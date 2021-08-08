@@ -1,5 +1,4 @@
-const abi1 = {
-
+window.abi1 = 
 [
     {
         "inputs": [
@@ -550,5 +549,3 @@ const abi1 = {
         "type": "function"
     }
 ]
-
-}
