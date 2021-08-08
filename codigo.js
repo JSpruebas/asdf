@@ -51,7 +51,7 @@ const coso = async () => {
 
   pendingReward = web3.utils.fromWei(pendingReward);
 
-  document.getElementById("add").innerText = pendingReward;
+  document.getElementById("pendRew").innerText = pendingReward;
 }
 
 
