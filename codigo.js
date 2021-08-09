@@ -16,6 +16,9 @@ window.onload = async () => {
     chainId = await web3.eth.getChainId()
 
     switch (chainId) {
+      case 1:
+        chainId = 'Ethereum Mainnet'
+        break
       case 56:
         chainId = 'Binance Smart Chain'
         break
@@ -26,7 +29,7 @@ window.onload = async () => {
         chainId = 'Polygon'
         break
       default:
-        chainId = 'This is an unknown network.'
+        chainId = 'Alguna red'
     }
 
     document.getElementById("red").innerText = chainId;
