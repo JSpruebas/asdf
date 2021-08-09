@@ -1,5 +1,6 @@
 
 const web3 = new Web3;
+let chainId;
 
 window.onload = async () => {
   const provider = await detectEthereumProvider({ timeout: 2000 })
@@ -11,6 +12,23 @@ window.onload = async () => {
     await provider.request({ method: 'eth_requestAccounts' })
 
     web3.setProvider(provider)
+
+    chainId = await web3.eth.getChainId()
+
+    switch (chainId) {
+      case "56":
+        console.log('Binance Smart Chain')
+        break
+      case "250":
+        console.log('Fantom Opera')
+        break
+      case "137":
+        console.log('Polygon')
+        break
+      default:
+        console.log('This is an unknown network.')
+    }
+
 
     coso();
 
@@ -47,7 +65,7 @@ const coso = async () => {
   let tiempo = hora - lastHarvest * 1000
   tiempo = (((tiempo / 3600000)).toFixed(1))
   document.getElementById("horas").innerText = tiempo + " horas";
-  
+
 }
 
 
