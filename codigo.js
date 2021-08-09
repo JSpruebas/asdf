@@ -17,13 +17,13 @@ window.onload = async () => {
     console.log(chainId)
 
     switch (chainId) {
-      case "56":
+      case 56:
         console.log('Binance Smart Chain')
         break
-      case "250":
+      case 250:
         console.log('Fantom Opera')
         break
-      case "137":
+      case 137:
         console.log('Polygon')
         break
       default:
