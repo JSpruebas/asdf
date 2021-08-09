@@ -43,7 +43,7 @@ const coso = async () => {
   horaHarvest = new Date(horaHarvest);
   document.getElementById("lastHarvest").innerText = horaHarvest;
 
-  let hora = Date.now
+  let hora = Date.now()
   console.log(hora)
   let tiempo = hora - lastHarvest * 1000
   console.log(tiempo)
