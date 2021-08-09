@@ -39,7 +39,7 @@ const coso = async () => {
 
 
   let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
-  lastHarvest = lastHarvest*1000
+  lastHarvest = new Date(lastHarvest*1000)
   document.getElementById("lastHarvest").innerText = lastHarvest;
 
   let hora = new Date(1628527140);
