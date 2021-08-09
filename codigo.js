@@ -14,6 +14,7 @@ window.onload = async () => {
     web3.setProvider(provider)
 
     chainId = await web3.eth.getChainId()
+    console.log(chainId)
 
     switch (chainId) {
       case "56":
