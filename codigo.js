@@ -38,9 +38,13 @@ const coso = async () => {
   document.getElementById("pendRew").innerText = pendingReward;
 
 
-  let lastHarvest = new Date(await zeroStratContract.methods.lastHarvestedTime().call());
+  let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
   document.getElementById("lastHarvest").innerText = lastHarvest;
+
+  let hora = new Date(1628527140);
+  console.log(hora)
 }
+
 
 
 
