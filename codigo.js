@@ -14,21 +14,22 @@ window.onload = async () => {
     web3.setProvider(provider)
 
     chainId = await web3.eth.getChainId()
-    console.log(chainId)
 
     switch (chainId) {
       case 56:
-        console.log('Binance Smart Chain')
+        chainId = 'Binance Smart Chain'
         break
       case 250:
-        console.log('Fantom Opera')
+        chainId = 'Fantom Opera'
         break
       case 137:
-        console.log('Polygon')
+        chainId = 'Polygon'
         break
       default:
-        console.log('This is an unknown network.')
+        chainId = 'This is an unknown network.'
     }
+
+    document.getElementById("red").innerText = chainId;
 
 
     coso();
