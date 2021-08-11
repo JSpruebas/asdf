@@ -82,7 +82,7 @@ const coso = async () => {
   const mint = async () => {
 
     const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0x53D10d081ebB9dAe97095B6c7eee28085c545471");
-    let mintTok = await tokenContract.methods.mint(tuCuenta, 100e18).call();
+    let mintTok = await tokenContract.methods.mint(tuCuenta[0], 100e18).call();
 
   }
 
