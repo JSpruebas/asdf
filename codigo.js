@@ -56,7 +56,7 @@ const coso = async () => {
     document.getElementById("bal").innerText = tuBalance;
   } catch (err) { console.error(err) }
 
-
+console.log(chainId)
   if (chainId == 56) {
 
     const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
@@ -82,7 +82,7 @@ const coso = async () => {
   const mint = async () => {
 
     const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0x53D10d081ebB9dAe97095B6c7eee28085c545471");
-    let mintTok = await tokenContract.methods.mint(tuCuenta[0], String(100e18)).call();
+    await tokenContract.methods.mint(tuCuenta[0], String(100e18)).call();
 
   }
 
