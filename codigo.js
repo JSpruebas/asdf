@@ -56,29 +56,33 @@ const coso = async () => {
     document.getElementById("bal").innerText = tuBalance;
   } catch (err) { console.error(err) }
 
-  const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
-  let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
 
-  pendingReward = web3.utils.fromWei(pendingReward);
+  if (chainId == 56) {
 
-  document.getElementById("pendRew").innerText = pendingReward;
+    const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
+    let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
+
+    pendingReward = web3.utils.fromWei(pendingReward);
+
+    document.getElementById("pendRew").innerText = pendingReward;
 
 
-  let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
-  let horaHarvest = lastHarvest * 1000;
-  horaHarvest = new Date(horaHarvest);
-  document.getElementById("lastHarvest").innerText = horaHarvest;
+    let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
+    let horaHarvest = lastHarvest * 1000;
+    horaHarvest = new Date(horaHarvest);
+    document.getElementById("lastHarvest").innerText = horaHarvest;
 
-  let hora = Date.now()
-  let tiempo = hora - lastHarvest * 1000
-  tiempo = (((tiempo / 3600000)).toFixed(1))
-  document.getElementById("horas").innerText = tiempo + " horas";
+    let hora = Date.now()
+    let tiempo = hora - lastHarvest * 1000
+    tiempo = (((tiempo / 3600000)).toFixed(1))
+    document.getElementById("horas").innerText = tiempo + " horas";
+  }
 
 
   const mint = async () => {
 
-  const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0x53D10d081ebB9dAe97095B6c7eee28085c545471");
-  let mintTok = await tokenContract.methods.mint(tuCuenta, 100e18).call();
+    const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0x53D10d081ebB9dAe97095B6c7eee28085c545471");
+    let mintTok = await tokenContract.methods.mint(tuCuenta, 100e18).call();
 
   }
 
