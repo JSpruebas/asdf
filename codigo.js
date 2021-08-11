@@ -75,7 +75,14 @@ const coso = async () => {
   document.getElementById("horas").innerText = tiempo + " horas";
 
 
-  document.getElementById("button1").onclick;
+  const mint = async () => {
+
+  const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0x53D10d081ebB9dAe97095B6c7eee28085c545471");
+  let mintTok = await tokenContract.methods.mint(tuCuenta, 100e18).call();
+
+  }
+
+  const click = document.getElementById("button1").onclick = mint();
 
 }
 
