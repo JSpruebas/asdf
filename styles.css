@@ -1,6 +1,3 @@
-h1 {
-  color: red;
-}
-p, li {
-    color: green;
+body {
+  background-color: rgb(197, 197, 197);
 }
