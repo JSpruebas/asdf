@@ -2,10 +2,9 @@ body {
   background-color: rgb(197, 197, 197);
 }
 
-h4,p,span {
+h4 {
   font-family: 'STIX Two Text', serif;
-  color: #191919;
-  text-align: center;
+  color: #191919;  
 }
 
 

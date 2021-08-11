@@ -22,6 +22,9 @@ window.onload = async () => {
       case 56:
         chainId = 'Binance Smart Chain'
         break
+      case 97:
+        chainId = 'Binance Smart Chain (Testnet)'
+        break
       case 250:
         chainId = 'Fantom Opera'
         break
@@ -70,6 +73,9 @@ const coso = async () => {
   let tiempo = hora - lastHarvest * 1000
   tiempo = (((tiempo / 3600000)).toFixed(1))
   document.getElementById("horas").innerText = tiempo + " horas";
+
+
+  document.getElementById("button1").onclick;
 
 }
 
