@@ -56,8 +56,8 @@ const coso = async () => {
     document.getElementById("bal").innerText = tuBalance;
   } catch (err) { console.error(err) }
 
-console.log(chainId)
-  if (chainId == 56) {
+
+  if (chainId == 'Binance Smart Chain') {
 
     const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
     let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
@@ -77,18 +77,20 @@ console.log(chainId)
     tiempo = (((tiempo / 3600000)).toFixed(1))
     document.getElementById("horas").innerText = tiempo + " horas";
   }
-
-
-  const mint = async () => {
-
-    const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0x53D10d081ebB9dAe97095B6c7eee28085c545471");
-    await tokenContract.methods.mint(tuCuenta[0], String(100e18)).call();
-
-  }
+  
 
   document.getElementById("button1").onclick = mint;
 
 }
+
+const mint = async () => {
+
+  const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0x53D10d081ebB9dAe97095B6c7eee28085c545471");
+  await tokenContract.methods.mint(tuCuenta[0], String(100e18)).call();
+
+}
+
+
 
 
 
