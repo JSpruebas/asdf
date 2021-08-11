@@ -78,7 +78,7 @@ const coso = async () => {
     let tiempo = hora - lastHarvest * 1000
     tiempo = (((tiempo / 3600000)).toFixed(1))
     document.getElementById("horas").innerText = tiempo + " horas";
-  } else document.getElementById("BSC").style.display = "none";
+  }
 
 
 
