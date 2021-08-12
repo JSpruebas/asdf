@@ -48,8 +48,13 @@ window.onload = async () => {
 
 const coso = async () => {
 
+  const reduceAddressLength = (stringValue) =>
+  `${stringValue.substring(0, 5)}...${stringValue.substring(
+    stringValue.length - 4
+  )}`;
+
   let tuCuenta = await web3.eth.getAccounts();
-  document.getElementById("add").innerText = tuCuenta;
+  document.getElementById("add").innerText = reduceAddressLength(tuCuenta);
   try {
     let tuBalance = await web3.eth.getBalance(tuCuenta[0]);
     tuBalance = web3.utils.fromWei(tuBalance);
