@@ -78,7 +78,7 @@ const coso = async () => {
     tiempo = (((tiempo / 3600000)).toFixed(1))
     document.getElementById("horas").innerText = tiempo + " horas";
 
-    document.getElementById("BSC").style.display = "initial";
+    document.getElementById("BSC").style.display = "inline-block";
 
   }
 
