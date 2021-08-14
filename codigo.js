@@ -89,7 +89,7 @@ const coso = async () => {
 }
 
 
-let refrescar = setInterval(coso, 1000);
+let refrescar = setInterval(coso, 3000);
 
 
 
