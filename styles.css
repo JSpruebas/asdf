@@ -13,14 +13,13 @@ h4 {
 }
 
 .vault {
-  display: none;
+  background-color: #aaf ;
+  border: 2px solid #88f;
   margin-top: 2px; 
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
-  display: inline-block;
-  background-color: #aaf ;
-  border: 2px solid #88f;
+  display: inline-block;    
   height: 100px;
   width: 200px;   
 }
