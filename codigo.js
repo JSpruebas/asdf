@@ -98,7 +98,7 @@ const mint = async () => {
   let cuenta = await web3.eth.getAccounts();
 
   const tokenContract = await new web3.eth.Contract(window.tokenAbi, "0x53D10d081ebB9dAe97095B6c7eee28085c545471");
-  await tokenContract.methods.mint(cuenta[0], String(1e22)).send({ from: cuenta[0] });
+  await tokenContract.methods.mint(cuenta[0], 10000000000000000000000n).send({ from: cuenta[0] });
 
 }
 
