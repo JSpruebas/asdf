@@ -64,13 +64,11 @@ const coso = async () => {
     
 
     const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
-    let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
+    let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();   
     
-    
-
     let pendingHumano = web3.utils.fromWei(pendingReward); 
 
-    setInterval(pendingReward, 3000) = document.getElementById("pendRew").innerText = pendingHumano;
+    document.getElementById("pendRew").innerText = pendingHumano;
 
 
     let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
@@ -89,6 +87,11 @@ const coso = async () => {
   document.getElementById("button1").onclick = mint;
 
 }
+
+
+setInterval(coso, 3000);
+
+
 
 const mint = async () => {
 
