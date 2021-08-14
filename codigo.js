@@ -59,7 +59,7 @@ const coso = async () => {
 
   if (chainId == 'Binance Smart Chain') {
 
-    document.getElementById("BSC").style.display = "initial";
+  //  document.getElementById("BSC").style.display = "initial";
 
     
 
