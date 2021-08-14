@@ -61,10 +61,12 @@ const coso = async () => {
 
     document.getElementById("BSC").style.display = "initial";
 
-    setInterval(pendingReward, 3000)
+    
 
     const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
     let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
+    
+    setInterval(pendingReward, 3000)
 
     let pendingHumano = web3.utils.fromWei(pendingReward); 
 
