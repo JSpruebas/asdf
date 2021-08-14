@@ -57,10 +57,7 @@ const coso = async () => {
   } catch (err) { console.error(err) }
 
 
-  if (chainId == 'Binance Smart Chain') {
-
-  //  document.getElementById("BSC").style.display = "initial";
-
+  if (chainId == 'Binance Smart Chain') { 
     
 
     const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
@@ -80,6 +77,9 @@ const coso = async () => {
     let tiempo = hora - lastHarvest * 1000
     tiempo = (((tiempo / 3600000)).toFixed(1))
     document.getElementById("horas").innerText = tiempo + " horas";
+
+    document.getElementById("BSC").style.display = "initial";
+
   }
 
 
