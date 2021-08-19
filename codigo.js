@@ -1,6 +1,8 @@
 
 const web3 = new Web3;
 const bsc = new Web3;
+const polygon = new Web3;
+const fantom = new Web3;
 let chainId;
 
 window.onload = async () => {
@@ -13,11 +15,10 @@ window.onload = async () => {
     await provider.request({ method: 'eth_requestAccounts' })
 
     web3.setProvider(provider)
-    bsc.setProvider("https://bsc-dataseed.binance.org/");
+    bsc.setProvider("https://bsc-dataseed.binance.org/")
+    polygon.setProvider("https://rpc-mainnet.maticvigil.com/")
+    fantom.setProvider("https://rpcapi.fantom.network")
 
-    let bscId = await bsc.eth.getChainId
-
-    console.log(bscId)
 
     chainId = await web3.eth.getChainId()
 
@@ -46,30 +47,34 @@ window.onload = async () => {
 
     coso();
 
+    wbusdStats();
+
   } else {
     console.error('Web3 provider not detected')
     alert("No se detecta Meta")
   }
 }
 
+
 const coso = async () => {
 
   let tuCuenta = await web3.eth.getAccounts();
-  document.getElementById("add").innerText = tuCuenta;
+  let cuenta = String(tuCuenta).substring(1, 5);
+  document.getElementById("add").textContent = cuenta + "...";
   try {
     let tuBalance = await web3.eth.getBalance(tuCuenta[0]);
-    tuBalance = web3.utils.fromWei(tuBalance);
-    document.getElementById("bal").innerText = tuBalance;
+    tuBalance = Number(web3.utils.fromWei(tuBalance)).toFixed(3);
+    document.getElementById("bal").textContent = tuBalance + " BNB";
   } catch (err) { console.error(err) }
 
 
-  if (chainId == 'Binance Smart Chain') { 
-    
+  if (chainId == 'Binance Smart Chain') {
+
 
     const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
-    let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();   
-    
-    let pendingHumano = web3.utils.fromWei(pendingReward); 
+    let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
+
+    let pendingHumano = web3.utils.fromWei(pendingReward);
 
     document.getElementById("pendRew").innerText = pendingHumano;
 
@@ -95,9 +100,31 @@ const coso = async () => {
 }
 
 
-let refrescar = setInterval(coso, 3000);
 
+const wbusdStats = async () => {
+  const wbusdPolygon = await new polygon.eth.Contract(window.tokenAbi, "0x87ff96aba480f1813aF5c780387d8De7cf7D8261")
+  const wbusdFtm = await new fantom.eth.Contract(window.tokenAbi, "0xB49C1609e70D25B945d80989632C24df96353980")
 
+  let balancePoly = await wbusdPolygon.methods.totalSupply().call()
+  balancePoly = Number(polygon.utils.fromWei(balancePoly)).toFixed(1);
+  balancePoly = new Intl.NumberFormat().format(balancePoly);
+  document.getElementById("wbusdPoly").textContent = balancePoly;
+
+  let balanceFtm = await wbusdFtm.methods.totalSupply().call()
+  balanceFtm = Number(fantom.utils.fromWei(balanceFtm)).toFixed(1);
+  balanceFtm = new Intl.NumberFormat().format(balanceFtm);
+  document.getElementById("wbusdFtm").textContent = balanceFtm;
+
+  const busdContract = await new bsc.eth.Contract(window.tokenAbi, "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56")
+  const collContract = "0x32e8E9095E05B4203Fe9B23284144f89766e634A"
+
+  let collateral = await busdContract.methods.balanceOf(collContract).call()
+  collateral = Number(bsc.utils.fromWei(collateral)).toFixed(1);
+  collateral = new Intl.NumberFormat().format(collateral);
+  document.getElementById("ColBusd").textContent = collateral;
+
+  
+}
 
 const mint = async () => {
 
@@ -108,6 +135,8 @@ const mint = async () => {
 
 }
 
+
+let refrescar = setInterval(wbusdStats, 30000);
 
 
 
