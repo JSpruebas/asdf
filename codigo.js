@@ -6,6 +6,13 @@ const fantom = new Web3;
 let chainId;
 
 window.onload = async () => {
+
+  bsc.setProvider("https://bsc-dataseed.binance.org/")
+  polygon.setProvider("https://rpc-mainnet.maticvigil.com/")
+  fantom.setProvider("https://rpcapi.fantom.network")
+  
+  wbusdStats()
+
   const provider = await detectEthereumProvider({ timeout: 2000 })
   if (provider) {
     provider.on('chainChanged', () => location.reload())
@@ -15,10 +22,6 @@ window.onload = async () => {
     await provider.request({ method: 'eth_requestAccounts' })
 
     web3.setProvider(provider)
-    bsc.setProvider("https://bsc-dataseed.binance.org/")
-    polygon.setProvider("https://rpc-mainnet.maticvigil.com/")
-    fantom.setProvider("https://rpcapi.fantom.network")
-
 
     chainId = await web3.eth.getChainId()
 
@@ -45,13 +48,13 @@ window.onload = async () => {
     document.getElementById("red").textContent = chainId;
 
     coso()
-   
+
 
   } else {
     console.error('Web3 provider not detected')
-    alert("Metamask no detectado, use navegador dapp")
+    alert("Metamask no detectado, use un navegador dapp para ver más información")
   }
-  wbusdStats()
+  
 }
 
 
