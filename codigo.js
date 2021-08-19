@@ -43,8 +43,9 @@ window.onload = async () => {
     }
 
     document.getElementById("red").textContent = chainId;
-    
-    if (chainId=='Binance Smart Chain')coso()
+
+    coso()
+    wbusdStats()
 
   } else {
     console.error('Web3 provider not detected')
@@ -62,7 +63,7 @@ const coso = async () => {
   try {
     let tuBalance = await web3.eth.getBalance(tuCuenta[0]);
     tuBalance = Number(web3.utils.fromWei(tuBalance)).toFixed(3);
-    document.getElementById("bal").textContent = tuBalance + " BNB";
+    document.getElementById("bal").textContent = tuBalance;
   } catch (err) { console.error(err) }
 
 
@@ -124,6 +125,8 @@ const wbusdStats = async () => {
 
 }
 
+/*
+
 const mint = async () => {
 
   let cuenta = await web3.eth.getAccounts();
@@ -132,6 +135,8 @@ const mint = async () => {
   await tokenContract.methods.mint(cuenta[0], BigInt(1e22)).send({ from: cuenta[0] });
 
 }
+
+*/
 
 
 let refrescar = setInterval(wbusdStats, 30000);
