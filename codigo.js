@@ -10,7 +10,7 @@ window.onload = async () => {
   bsc.setProvider("https://bsc-dataseed.binance.org/")
   polygon.setProvider("https://rpc-mainnet.maticvigil.com/")
   fantom.setProvider("https://rpcapi.fantom.network")
-  
+
   wbusdStats()
 
   const provider = await detectEthereumProvider({ timeout: 2000 })
@@ -54,7 +54,7 @@ window.onload = async () => {
     console.error('Web3 provider not detected')
     alert("Metamask no detectado, use un navegador dapp para ver más información")
   }
-  
+
 }
 
 
@@ -123,7 +123,9 @@ const wbusdStats = async () => {
   let collateral = await busdContract.methods.balanceOf(collContract).call()
   collateral = Number(bsc.utils.fromWei(collateral)).toFixed(1);
   collateral = new Intl.NumberFormat().format(collateral);
-  document.getElementById("ColBusd").textContent = collateral;
+  let porcent = parseFloat(collateral) / ((parseFloat(balancePoly) + parseFloat(balanceFtm))) * 100;
+  porcent = porcent.toFixed(2)
+  document.getElementById("ColBusd").textContent = collateral + " " + porcent + " %";
 
 
 }
