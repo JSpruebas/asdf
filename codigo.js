@@ -1,5 +1,6 @@
 
 const web3 = new Web3;
+const bsc = new Web3;
 let chainId;
 
 window.onload = async () => {
@@ -12,6 +13,9 @@ window.onload = async () => {
     await provider.request({ method: 'eth_requestAccounts' })
 
     web3.setProvider(provider)
+    bsc.setProvider("https://bsc-dataseed.binance.org/");
+
+    console.log(bsc.eth.getChainId)
 
     chainId = await web3.eth.getChainId()
 
