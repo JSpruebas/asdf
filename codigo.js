@@ -43,16 +43,17 @@ window.onload = async () => {
     }
 
     document.getElementById("red").innerText = chainId;
-
-
-    coso();
+    
 
     wbusdStats();
 
-  } else {
-    console.error('Web3 provider not detected')
-    alert("No se detecta Meta")
-  }
+  } else coso();
+
+
+} else {
+  console.error('Web3 provider not detected')
+  alert("Metamask no detectado, use navegador dapp")
+}
 }
 
 
