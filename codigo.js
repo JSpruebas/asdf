@@ -42,18 +42,15 @@ window.onload = async () => {
         chainId = 'Alguna red'
     }
 
-    document.getElementById("red").innerText = chainId;
+    document.getElementById("red").textContent = chainId;
     
+    if (chainId=='Binance Smart Chain')coso()
 
-    wbusdStats();
+  } else {
+    console.error('Web3 provider not detected')
+    alert("Metamask no detectado, use navegador dapp")
 
-  } else coso();
-
-
-} else {
-  console.error('Web3 provider not detected')
-  alert("Metamask no detectado, use navegador dapp")
-}
+  }
 }
 
 
@@ -124,7 +121,7 @@ const wbusdStats = async () => {
   collateral = new Intl.NumberFormat().format(collateral);
   document.getElementById("ColBusd").textContent = collateral;
 
-  
+
 }
 
 const mint = async () => {
