@@ -94,7 +94,7 @@ const coso = async () => {
 
 
 
-  document.getElementById("button1").onclick = mint;
+  //document.getElementById("button1").onclick = mint;
 
 }
 
