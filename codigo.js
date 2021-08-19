@@ -15,7 +15,9 @@ window.onload = async () => {
     web3.setProvider(provider)
     bsc.setProvider("https://bsc-dataseed.binance.org/");
 
-    console.log(await bsc.eth.getChainId)
+    let bscId = await bsc.eth.getChainId
+
+    console.log(bscId)
 
     chainId = await web3.eth.getChainId()
 
