@@ -45,13 +45,13 @@ window.onload = async () => {
     document.getElementById("red").textContent = chainId;
 
     coso()
-    wbusdStats()
+   
 
   } else {
     console.error('Web3 provider not detected')
     alert("Metamask no detectado, use navegador dapp")
-
   }
+  wbusdStats()
 }
 
 
