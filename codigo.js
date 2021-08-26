@@ -1,19 +1,16 @@
-
 const web3 = new Web3;
 const bsc = new Web3;
 const polygon = new Web3;
 const fantom = new Web3;
+bsc.setProvider("https://bsc-dataseed.binance.org/")
+polygon.setProvider("https://rpc-mainnet.maticvigil.com/")
+fantom.setProvider("https://rpcapi.fantom.network")
 let chainId;
 
 window.onload = async () => {
 
-  bsc.setProvider("https://bsc-dataseed.binance.org/")
-  polygon.setProvider("https://rpc-mainnet.maticvigil.com/")
-  fantom.setProvider("https://rpcapi.fantom.network")
+  const provider = await detectEthereumProvider()
 
-  wbusdStats()
-
-  const provider = await detectEthereumProvider({ timeout: 2000 })
   if (provider) {
     provider.on('chainChanged', () => location.reload())
     provider.on('accountsChanged', () => location.reload())
@@ -47,57 +44,32 @@ window.onload = async () => {
 
     document.getElementById("red").textContent = chainId;
 
-    coso()
-
+    conectado()
 
   } else {
     console.error('Web3 provider not detected')
-    alert("Metamask no detectado, use un navegador dapp para ver más información")
+    //alert("Metamask no detectado, use un navegador dapp para ver más información")
   }
-
 }
 
 
-const coso = async () => {
+
+
+
+const conectado = async () => {
 
   let tuCuenta = await web3.eth.getAccounts();
-  let cuenta = String(tuCuenta).substring(1, 5);
-  document.getElementById("add").textContent = cuenta + "...";
-  try {
-    let tuBalance = await web3.eth.getBalance(tuCuenta[0]);
-    tuBalance = Number(web3.utils.fromWei(tuBalance)).toFixed(3);
-    document.getElementById("bal").textContent = tuBalance;
-  } catch (err) { console.error(err) }
-
+  document.getElementById("add").textContent = `${String(tuCuenta).substring(1, 5)}...${String(tuCuenta).substring(38)} `;
+  let tuBalance = await web3.eth.getBalance(tuCuenta[0]);
+  tuBalance = Number(web3.utils.fromWei(tuBalance)).toFixed(3);
+  document.getElementById("bal").textContent = tuBalance;
 
   if (chainId == 'Binance Smart Chain') {
 
-
-    const zeroStratContract = await new web3.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
-    let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
-
-    let pendingHumano = web3.utils.fromWei(pendingReward);
-
-    document.getElementById("pendRew").innerText = pendingHumano;
-
-
-    let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
-    let horaHarvest = lastHarvest * 1000;
-    horaHarvest = new Date(horaHarvest);
-    //document.getElementById("lastHarvest").innerText = horaHarvest;
-
-    let hora = Date.now()
-    let tiempo = hora - lastHarvest * 1000
-    tiempo = (((tiempo / 3600000)).toFixed(1))
-    document.getElementById("horas").innerText = tiempo + " horas";
-
-    document.getElementById("BSC").style.display = "inline-block";
-
   }
+}
 
-
-
-  //document.getElementById("button1").onclick = mint;
+const vaults = async () => {
 
 }
 
@@ -110,27 +82,76 @@ const wbusdStats = async () => {
   let balancePoly = await wbusdPolygon.methods.totalSupply().call()
   balancePoly = Number(polygon.utils.fromWei(balancePoly)).toFixed(1);
   balancePoly = new Intl.NumberFormat().format(balancePoly);
-  document.getElementById("wbusdPoly").textContent = balancePoly;
 
   let balanceFtm = await wbusdFtm.methods.totalSupply().call()
   balanceFtm = Number(fantom.utils.fromWei(balanceFtm)).toFixed(1);
   balanceFtm = new Intl.NumberFormat().format(balanceFtm);
-  document.getElementById("wbusdFtm").textContent = balanceFtm;
+
+  document.getElementById("wbusdPoly").textContent = `$ ${balancePoly}  /  $ ${balanceFtm}`;
 
   const busdContract = await new bsc.eth.Contract(window.tokenAbi, "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56")
   const collContract = "0x32e8E9095E05B4203Fe9B23284144f89766e634A"
 
-  let collateral = await busdContract.methods.balanceOf(collContract).call()
+  let collateral = await busdContract.methods.balanceOf(collContract).call();
   collateral = Number(bsc.utils.fromWei(collateral)).toFixed(1);
   collateral = new Intl.NumberFormat().format(collateral);
   let porcent = parseFloat(collateral) / ((parseFloat(balancePoly) + parseFloat(balanceFtm))) * 100;
-  porcent = porcent.toFixed(2)
-  document.getElementById("ColBusd").textContent = collateral + " " + porcent + " %";
+  porcent = porcent.toFixed(2);
+  document.getElementById("ColBusd").textContent = `$ ${collateral} - ${porcent}  %`;
 
 
+
+
+  const zeroStratContract = await new bsc.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
+  let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
+
+  let pendingHumano = bsc.utils.fromWei(pendingReward);
+
+  document.getElementById("pendRew").textContent = pendingHumano;
+
+
+  let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
+  let horaHarvest = lastHarvest * 1000;
+  horaHarvest = new Date(horaHarvest);
+  //document.getElementById("lastHarvest").innerText = horaHarvest;
+
+  let hora = Date.now()
+  let tiempo = hora - lastHarvest * 1000
+  tiempo = (((tiempo / 3600000)).toFixed(1))
+  document.getElementById("horas").innerText = tiempo + " horas";
+
+  document.getElementById("BSC").style.display = "inline-block";
+
+
+  const zeroStratContractApe = await new bsc.eth.Contract(window.abi1, "0x030d358E5d126A46256748829Ab0A488b45B31c8");
+  let lastHarvestApe = await zeroStratContractApe.methods.lastHarvestedTime().call();
+  let horaHarvestApe = lastHarvestApe * 1000;
+  horaHarvestApe = new Date(horaHarvestApe);
+
+  let tiempoApe = hora - lastHarvestApe * 1000
+  tiempoApe = (((tiempoApe / 3600000)).toFixed(1))
 }
 
+wbusdStats();
+
+let refrescar = setInterval(wbusdStats, 30000);
+
+
 /*
+
+const onClickConnect = async () => {
+  try {
+    await ethereum.request({ method: 'eth_requestAccounts' });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+document.getElementById("button1").onclick = onClickConnect
+
+
+
+
 
 const mint = async () => {
 
@@ -142,9 +163,6 @@ const mint = async () => {
 }
 
 */
-
-
-let refrescar = setInterval(wbusdStats, 30000);
 
 
 

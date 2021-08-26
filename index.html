@@ -12,33 +12,32 @@
 </head>
 
 <body>
-	<div class="headContainer">
+	<div class="headContainer">	
 		<h4 class="headItems">Cuenta conectada </h4>
 		<p class="headItems" id="add">No conectada</p>
 		<h4 class="headItems">Red</h4>
 		<p class="headItems" id="red">No conectada</p>
 		<h4 class="headItems">Balance</h4>
 		<p class="headItems" id="bal"></p>
+
 	</div>
+
 	<div class="vaults">
 		<div class="vault" style="display: none;" id="BSC">
-			<h4>Pending Reward BUSD/UST (BSC)</h4>
+			<h4>Pending BUSD/UST (BSC)</h4>
 			<p id="pendRew"></p>
 			<h4>Last Compound</h4>
 			<p id="lastHarvest"></p>
 			<p id="horas"></p>
 		</div>
 		<div class="vault">
-			<h4>WBUSD en Polygon</h4>
+			<h4>WBUSD en Polygon / Fantom</h4>
 			<p id="wbusdPoly"></p>
-			<h4>WBUSD en Fantom</h4>
-			<p id="wbusdFtm"></p>
 			<h4>Colateral en BUSD</h4>
 			<p id="ColBusd"></p>
 		</div>
 	</div>
-	
-	<!--<button class="boton" id="button1">Pedir</button>-->
+
 	<script src="https://unpkg.com/@metamask/detect-provider/dist/detect-provider.min.js"></script>
 	<script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
 	<script src="zeroStratAbi.js"></script>
