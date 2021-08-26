@@ -77,7 +77,7 @@ const zeroApeDiv = document.createElement("div");
 zeroApeDiv.className = "vault";
 
 const titleZeroApe = document.createElement("h4");
-titleZeroApe.textContent="Pending BUSD / USDT (ApeSwap)";
+titleZeroApe.textContent="Pending BUSD / USDT (Ape)";
 
 const pendingRewApe = document.createElement("p");
 
