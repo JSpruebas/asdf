@@ -73,11 +73,67 @@ const vaults = async () => {
 
 }
 
+const zeroApeDiv = document.createElement("div");
+zeroApeDiv.className = "vault";
+
+const titleZeroApe = document.createElement("h4");
+titleZeroApe.textContent="Pending BUSD / USDT (ApeSwap)";
+
+const pendingRewApe = document.createElement("p");
+
+const lastZeroApe = document.createElement("h4");
+lastZeroApe.textContent="Last Compound";
+
+const horasApe = document.createElement("p");
+
+zeroApeDiv.appendChild(titleZeroApe); 
+zeroApeDiv.appendChild(pendingRewApe);
+zeroApeDiv.appendChild(lastZeroApe);
+zeroApeDiv.appendChild(horasApe);
+
+const divVaults = document.querySelector(".vaults");
+divVaults.appendChild(zeroApeDiv);
+
 
 
 const wbusdStats = async () => {
-  const wbusdPolygon = await new polygon.eth.Contract(window.tokenAbi, "0x87ff96aba480f1813aF5c780387d8De7cf7D8261")
-  const wbusdFtm = await new fantom.eth.Contract(window.tokenAbi, "0xB49C1609e70D25B945d80989632C24df96353980")
+
+  const zeroStratContract = await new bsc.eth.Contract(abi1, zeroCake);
+  let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
+  const rewardToken = await new bsc.eth.Contract(tokenAbi, cakeToken)
+  let rewardInContract = await rewardToken.methods.balanceOf(zeroCake).call();
+  let totalPending = pendingReward + rewardInContract;
+  let pendingHumano = bsc.utils.fromWei(totalPending);
+  document.getElementById("pendRew").textContent = pendingHumano;
+
+  let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
+  let horaHarvest = lastHarvest * 1000;
+  horaHarvest = new Date(horaHarvest);
+  let hora = Date.now()
+  let tiempo = hora - lastHarvest * 1000
+  tiempo = (((tiempo / 3600000)).toFixed(1))
+  document.getElementById("horas").textContent = tiempo + " horas";
+
+
+  const zeroStratContractApe = await new bsc.eth.Contract(abi1, zeroApe);
+  let pendingRewardApe = await zeroStratContractApe.methods.calculateTotalPendingCakeRewards().call();
+  const rewardTokenApe = await new bsc.eth.Contract(tokenAbi, bananaToken)
+  let rewardInContractApe = await rewardTokenApe.methods.balanceOf(zeroApe).call();
+  let totalPendingApe = pendingRewardApe + rewardInContractApe;
+  let pendingHumanoApe = bsc.utils.fromWei(totalPendingApe);
+  pendingRewApe.textContent= pendingHumanoApe;
+
+
+  let lastHarvestApe = await zeroStratContractApe.methods.lastHarvestedTime().call();
+  let horaHarvestApe = lastHarvestApe * 1000;
+  horaHarvestApe = new Date(horaHarvestApe);
+  let tiempoApe = hora - lastHarvestApe * 1000
+  tiempoApe = (((tiempoApe / 3600000)).toFixed(1))
+  horasApe.textContent = tiempoApe + " horas";
+
+
+  const wbusdPolygon = await new polygon.eth.Contract(tokenAbi, "0x87ff96aba480f1813aF5c780387d8De7cf7D8261")
+  const wbusdFtm = await new fantom.eth.Contract(tokenAbi, "0xB49C1609e70D25B945d80989632C24df96353980")
 
   let balancePoly = await wbusdPolygon.methods.totalSupply().call()
   balancePoly = Number(polygon.utils.fromWei(balancePoly)).toFixed(1);
@@ -89,7 +145,7 @@ const wbusdStats = async () => {
 
   document.getElementById("wbusdPoly").textContent = `$ ${balancePoly}  /  $ ${balanceFtm}`;
 
-  const busdContract = await new bsc.eth.Contract(window.tokenAbi, "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56")
+  const busdContract = await new bsc.eth.Contract(tokenAbi, "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56")
   const collContract = "0x32e8E9095E05B4203Fe9B23284144f89766e634A"
 
   let collateral = await busdContract.methods.balanceOf(collContract).call();
@@ -99,42 +155,16 @@ const wbusdStats = async () => {
   porcent = porcent.toFixed(2);
   document.getElementById("ColBusd").textContent = `$ ${collateral} - ${porcent}  %`;
 
-
-
-
-  const zeroStratContract = await new bsc.eth.Contract(window.abi1, "0xaafAb69eC1984c43dE9720F20743033B04E09aFA");
-  let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
-
-  let pendingHumano = bsc.utils.fromWei(pendingReward);
-
-  document.getElementById("pendRew").textContent = pendingHumano;
-
-
-  let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
-  let horaHarvest = lastHarvest * 1000;
-  horaHarvest = new Date(horaHarvest);
-  //document.getElementById("lastHarvest").innerText = horaHarvest;
-
-  let hora = Date.now()
-  let tiempo = hora - lastHarvest * 1000
-  tiempo = (((tiempo / 3600000)).toFixed(1))
-  document.getElementById("horas").innerText = tiempo + " horas";
-
-  document.getElementById("BSC").style.display = "inline-block";
-
-
-  const zeroStratContractApe = await new bsc.eth.Contract(window.abi1, "0x030d358E5d126A46256748829Ab0A488b45B31c8");
-  let lastHarvestApe = await zeroStratContractApe.methods.lastHarvestedTime().call();
-  let horaHarvestApe = lastHarvestApe * 1000;
-  horaHarvestApe = new Date(horaHarvestApe);
-
-  let tiempoApe = hora - lastHarvestApe * 1000
-  tiempoApe = (((tiempoApe / 3600000)).toFixed(1))
 }
 
 wbusdStats();
 
 let refrescar = setInterval(wbusdStats, 30000);
+
+
+
+  
+
 
 
 /*

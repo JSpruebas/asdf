@@ -8,6 +8,7 @@
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
 	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="normalize.css">
 	<title></title>
 </head>
 
@@ -23,11 +24,10 @@
 	</div>
 
 	<div class="vaults">
-		<div class="vault" style="display: none;" id="BSC">
-			<h4>Pending BUSD/UST (BSC)</h4>
+		<div class="vault" id="BSC">
+			<h4>Pending BUSD / UST (BSC)</h4>
 			<p id="pendRew"></p>
-			<h4>Last Compound</h4>
-			<p id="lastHarvest"></p>
+			<h4>Last Compound</h4>			
 			<p id="horas"></p>
 		</div>
 		<div class="vault">
@@ -40,6 +40,7 @@
 
 	<script src="https://unpkg.com/@metamask/detect-provider/dist/detect-provider.min.js"></script>
 	<script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+	<script src="contracts.js"></script>
 	<script src="zeroStratAbi.js"></script>
 	<script src="tokenAbi.js"></script>
 	<script src="codigo.js" type="module"></script>

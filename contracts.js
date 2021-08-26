@@ -1,0 +1,8 @@
+window.zeroCake = "0xaafAb69eC1984c43dE9720F20743033B04E09aFA";
+
+window.cakeToken = "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82";
+
+window.zeroApe = "0x030d358E5d126A46256748829Ab0A488b45B31c8";
+
+window.bananaToken = "0x603c7f932ED1fc6575303D8Fb018fDCBb0f39a95";
+
