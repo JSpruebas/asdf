@@ -102,8 +102,8 @@ const wbusdStats = async () => {
   let pendingReward = await zeroStratContract.methods.calculateTotalPendingCakeRewards().call();
   const rewardToken = await new bsc.eth.Contract(tokenAbi, cakeToken)
   let rewardInContract = await rewardToken.methods.balanceOf(zeroCake).call();
-  let totalPending = pendingReward + rewardInContract;
-  let pendingHumano = bsc.utils.fromWei(totalPending);
+  let totalPending = Number(pendingReward) + Number(rewardInContract);
+  let pendingHumano = bsc.utils.fromWei(String(totalPending));
   document.getElementById("pendRew").textContent = pendingHumano;
 
   let lastHarvest = await zeroStratContract.methods.lastHarvestedTime().call();
@@ -119,8 +119,8 @@ const wbusdStats = async () => {
   let pendingRewardApe = await zeroStratContractApe.methods.calculateTotalPendingCakeRewards().call();
   const rewardTokenApe = await new bsc.eth.Contract(tokenAbi, bananaToken)
   let rewardInContractApe = await rewardTokenApe.methods.balanceOf(zeroApe).call();
-  let totalPendingApe = pendingRewardApe + rewardInContractApe;
-  let pendingHumanoApe = bsc.utils.fromWei(totalPendingApe);
+  let totalPendingApe = Number(pendingRewardApe) + Number(rewardInContractApe);
+  let pendingHumanoApe = bsc.utils.fromWei(String(totalPendingApe));
   pendingRewApe.textContent= pendingHumanoApe;
 
 
